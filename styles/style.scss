@@ -1,0 +1,207 @@
+$image : 'https://images.pexels.com/photos/5177790/pexels-photo-5177790.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260';
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+section {
+    position: absolute;
+    width: 415px;
+    height: 740px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: -1px 10px 20px grey;
+    overflow: hidden;
+
+    .container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: url($image);
+        background-repeat: none;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .dummy {
+        position: absolute;
+        pointer-events: none;
+        width: 100%;
+        height: 100%;
+        transition: all .3s ease-in;
+    }
+
+    .blur {
+        backdrop-filter: blur(10px);
+        pointer-events: fill;
+    }
+
+    .swipeup-container {
+        position: absolute;
+        width: 200px;
+        height: 25%;
+        left: 50%;
+        transform: translate(-50%);
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+
+        .swipe-up {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            bottom: 10%;
+        }
+
+        %swipe-up {
+            content: '';
+            position: absolute;
+            width: 40%;
+            height: 40%;
+            border: 2px none white;
+            pointer-events: none;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            border-left-style: solid;
+            border-top-style: solid;
+            border-radius: 10% 20%;
+            opacity: 0;
+        }
+
+        .swipe-up::before {
+            @extend %swipe-up;
+            animation: fade-in-out 1s infinite 1.5s alternate ease-in;
+        }
+
+        .swipe-up::after {
+            @extend %swipe-up;
+            width: 30%;
+            height: 30%;
+            top: 70%;
+            animation: fade-in-out 1s infinite alternate-reverse ease-in;
+        }
+
+        @keyframes fade-in-out {
+            to {
+                opacity: 1;
+            }
+        }
+    }
+
+
+
+
+    .popup {
+        position: absolute;
+        width: 90%;
+        height: 100%;
+        left: 50%;
+        transform: translate(-50%);
+        background-color: white;
+        border-radius: 15px 15px 0 0;
+        transition: top .5s ease-in;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        top: 100%;
+        // top: 20%;
+
+        .top-bar {
+            position: absolute;
+            width: 100%;
+            height: 40px;
+            padding: 0 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 1px 3px rgb(223, 223, 223);
+
+            .close {
+                position: relative;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                transition: all .2s;
+            }
+
+            .rotate {
+                transform: rotate(90deg);
+            }
+
+            %close {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border: 1px none black;
+                pointer-events: none;
+            }
+
+            .close::before {
+                @extend %close;
+                border-left-style: solid;
+                left: 50%;
+                transform-origin: left center;
+                transform: rotate(45deg);
+            }
+
+            .close::after {
+                @extend %close;
+                border-right-style: solid;
+                right: 50%;
+                transform-origin: right center;
+                transform: rotate(-45deg);
+            }
+        }
+
+
+
+        .popup-container {
+            overflow: scroll;
+            margin-top: 40px;
+            width: 100%;
+            padding: 25px;
+
+            h1,
+            h6 {
+                text-align: center;
+            }
+
+            hr {
+                opacity: .5;
+                margin: 15px 0;
+            }
+
+            p {
+                padding-top: 10px;
+            }
+
+            .empty {
+                height: 20%;
+            }
+        }
+
+    }
+
+    .active {
+        top: 20%;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    section {
+        width: 100vw;
+        height: 100%;
+    }
+
+}

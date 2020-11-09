@@ -1,0 +1,230 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+section {
+  position: absolute;
+  width: 415px;
+  height: 740px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-box-shadow: -1px 10px 20px grey;
+          box-shadow: -1px 10px 20px grey;
+  overflow: hidden;
+}
+
+section .container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://images.pexels.com/photos/5177790/pexels-photo-5177790.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
+  background-repeat: none;
+  background-size: cover;
+  background-position: center;
+}
+
+section .dummy {
+  position: absolute;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all .3s ease-in;
+  transition: all .3s ease-in;
+}
+
+section .blur {
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  pointer-events: fill;
+}
+
+section .swipeup-container {
+  position: absolute;
+  width: 200px;
+  height: 25%;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+section .swipeup-container .swipe-up {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  bottom: 10%;
+}
+
+section .swipeup-container .swipe-up::before, section .swipeup-container .swipe-up::after {
+  content: '';
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  border: 2px none white;
+  pointer-events: none;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%) rotate(45deg);
+          transform: translate(-50%, -50%) rotate(45deg);
+  border-left-style: solid;
+  border-top-style: solid;
+  border-radius: 10% 20%;
+  opacity: 0;
+}
+
+section .swipeup-container .swipe-up::before {
+  -webkit-animation: fade-in-out 1s infinite 1.5s alternate ease-in;
+          animation: fade-in-out 1s infinite 1.5s alternate ease-in;
+}
+
+section .swipeup-container .swipe-up::after {
+  width: 30%;
+  height: 30%;
+  top: 70%;
+  animation: fade-in-out 1s infinite alternate-reverse ease-in;
+}
+
+@-webkit-keyframes fade-in-out {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-out {
+  to {
+    opacity: 1;
+  }
+}
+
+section .popup {
+  position: absolute;
+  width: 90%;
+  height: 100%;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+  background-color: white;
+  border-radius: 15px 15px 0 0;
+  -webkit-transition: top .5s ease-in;
+  transition: top .5s ease-in;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: hidden;
+  top: 100%;
+}
+
+section .popup .top-bar {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  padding: 0 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-shadow: 0 1px 3px #dfdfdf;
+          box-shadow: 0 1px 3px #dfdfdf;
+}
+
+section .popup .top-bar .close {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+section .popup .top-bar .rotate {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+section .popup .top-bar .close::before, section .popup .top-bar .close::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px none black;
+  pointer-events: none;
+}
+
+section .popup .top-bar .close::before {
+  border-left-style: solid;
+  left: 50%;
+  -webkit-transform-origin: left center;
+          transform-origin: left center;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+section .popup .top-bar .close::after {
+  border-right-style: solid;
+  right: 50%;
+  -webkit-transform-origin: right center;
+          transform-origin: right center;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+section .popup .popup-container {
+  overflow: scroll;
+  margin-top: 40px;
+  width: 100%;
+  padding: 25px;
+}
+
+section .popup .popup-container h1,
+section .popup .popup-container h6 {
+  text-align: center;
+}
+
+section .popup .popup-container hr {
+  opacity: .5;
+  margin: 15px 0;
+}
+
+section .popup .popup-container p {
+  padding-top: 10px;
+}
+
+section .popup .popup-container .empty {
+  height: 20%;
+}
+
+section .active {
+  top: 20%;
+}
+
+@media only screen and (max-width: 600px) {
+  section {
+    width: 100vw;
+    height: 100%;
+  }
+}
+/*# sourceMappingURL=style.css.map */
