@@ -112,8 +112,8 @@ section {
         display: flex;
         justify-content: center;
         overflow: hidden;
-        top: 100%;
-        // top: 20%;
+        // top: 100%;
+        top: 20%;
 
         .top-bar {
             position: absolute;
@@ -131,6 +131,9 @@ section {
                 height: 25px;
                 border-radius: 50%;
                 transition: all .2s;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .rotate {
@@ -140,25 +143,20 @@ section {
             %close {
                 content: '';
                 position: absolute;
-                width: 100%;
-                height: 100%;
-                border: 1px none black;
+                width: 1px;
+                height: 80%;
+                border-radius: 1px;
+                background-color: rgb(37, 37, 37);
                 pointer-events: none;
             }
 
             .close::before {
                 @extend %close;
-                border-left-style: solid;
-                left: 50%;
-                transform-origin: left center;
                 transform: rotate(45deg);
             }
 
             .close::after {
                 @extend %close;
-                border-right-style: solid;
-                right: 50%;
-                transform-origin: right center;
                 transform: rotate(-45deg);
             }
         }
