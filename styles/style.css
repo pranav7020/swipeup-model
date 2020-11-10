@@ -130,7 +130,7 @@ section .popup {
       -ms-flex-pack: center;
           justify-content: center;
   overflow: hidden;
-  top: 20%;
+  top: 100%;
 }
 
 section .popup .top-bar {
